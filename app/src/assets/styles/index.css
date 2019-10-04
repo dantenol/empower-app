@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+textarea:focus,
+input:focus,
+select:focus,
+button:focus {
+  outline: none;
+}
+
+*[hidden] {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  body {
+    overflow-x: hidden;
+  }
+}

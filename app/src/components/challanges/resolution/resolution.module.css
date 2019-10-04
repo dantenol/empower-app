@@ -1,10 +1,10 @@
 .header {
-  width: 100vw;
+  width: 100%;
   height: 72px;
   position: fixed;
-  background: rgb(155,2,209);
-  background: linear-gradient(180deg, rgba(155,2,209,1) 0%, rgba(180,0,207,1) 100%);
+  background: rgb(180, 0, 207);
   text-align: center;
+  z-index: 999;
 }
 
 .avatar {
@@ -16,5 +16,269 @@
 }
 
 .description {
-  background: linear-gradient(180deg, rgba(180,0,207,1) 0%, #ff00cc 100%);
+  padding: 30px 0;
+  background: linear-gradient(180deg, rgba(180, 0, 207, 1) 0%, #ff00cc 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightArrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: relative;
+  top: -50px;
+  border-width: 40px 100vw 0 0;
+  border-color: #ff00cc transparent transparent transparent;
+}
+
+.darkArrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 50px 100vw 0 0;
+  border-color: #cc00ae transparent transparent transparent;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 36px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.video {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+  width: 80vw;
+  max-width: 560px;
+}
+.videoFrame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.number {
+  border: 2px solid purple;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  margin-right: 16px;
+}
+
+.name {
+  text-transform: uppercase;
+  color: white;
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px;
+}
+
+.actoinTitle {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.downloadButton {
+  margin-top: 48px;
+}
+
+.downloadButton:hover {
+  background: plum;
+}
+
+.buttonIcon {
+  width: 24px;
+}
+
+.buttonText {
+  margin-left: 20px;
+}
+
+@media screen and (min-width: 700px) {
+  .video {
+    padding-bottom: 315px;
+  }
+}
+
+.container {
+  display: flex;
+}
+
+.button,
+button {
+  text-transform: uppercase;
+  font-weight: bold;
+  background: white;
+  color: purple;
+  border: 2px solid purple;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.button:focus,
+button:focus {
+  background-color: #ff006a;
+  border-width: 3px;
+}
+
+button:disabled,
+button[disabled] {
+  border-color: grey;
+  color: grey;
+  background-color: lightgray;
+}
+
+.action button {
+  margin-top: 16px;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.lbl_toggle {
+  display: block;
+
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+
+  padding: 1rem;
+  
+  color: purple;
+  
+  cursor: pointer;
+  
+  border: 1px solid transparent;
+  border-radius: 7px;
+  transition: all 0.25s ease-out;
+}
+
+.lbl_toggle:not(:first-child) {
+  margin-top: 16px;
+}
+
+.lbl_toggle:hover {
+  color: #4b0271;
+}
+
+.lbl_toggle::before {
+  content: ' ';
+  display: inline-block;
+
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+
+  vertical-align: middle;
+  margin-right: 0.7rem;
+  transform: translateY(-2px);
+
+  transition: transform 0.2s ease-out;
+}
+
+.collapsible_content .content_inner {
+  border: 1px solid purple;
+  border-top-width: 0;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: .5rem 1rem;
+}
+
+.collapsible_content {
+  max-height: 0px;
+  overflow: hidden;
+
+  transition: max-height .25s ease-in-out;
+}
+
+.toggle:checked + .lbl_toggle + .collapsible_content {
+  max-height: 350px;
+}
+
+.toggle:checked + .lbl_toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.toggle:checked + .lbl_toggle {
+  border-color: purple;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-width: 0;
+}
+
+.content_inner button img {
+  width: 20px;
+}
+
+.challenge {
+  margin-top: 24px;
+}
+
+.challenge p {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+  color: purple;
+}
+
+.challenge div {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.challengeClick {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.2em;
+  border: 1px solid purple;
+  color: purple;
+  text-transform: uppercase;
+  margin: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.toggle:checked + .challengeClick {
+  background-color: purple;
+  color: white;
+}
+
+button.next {
+  border: none;
+  font-weight: normal;
+  margin-top: 32px;
+  float: right;
+}
+
+button.next:disabled {
+  background: none;
 }

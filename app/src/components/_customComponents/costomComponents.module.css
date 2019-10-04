@@ -1,0 +1,30 @@
+.textField {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: purple
+}
+
+.textFieldInput {
+  border: 2px solid purple;
+  padding: 8px;
+  font-size: 20px;
+  border-radius: 8px;
+  width: 256px;
+  background: white
+}
+
+.textFieldInput:focus {
+  background-color: floralwhite;
+  border-width: 3px;
+}
+
+.textField:not(:first-child) {
+  margin-top: 24px;
+}
