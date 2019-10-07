@@ -176,11 +176,11 @@ input[type='checkbox'] {
   text-transform: uppercase;
 
   padding: 1rem;
-  
+
   color: purple;
-  
+
   cursor: pointer;
-  
+
   border: 1px solid transparent;
   border-radius: 7px;
   transition: all 0.25s ease-out;
@@ -214,14 +214,14 @@ input[type='checkbox'] {
   border-top-width: 0;
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .collapsible_content {
   max-height: 0px;
   overflow: hidden;
 
-  transition: max-height .25s ease-in-out;
+  transition: max-height 0.25s ease-in-out;
 }
 
 .toggle:checked + .lbl_toggle + .collapsible_content {
@@ -296,4 +296,38 @@ button.back {
 
 button.next:disabled {
   background: none;
+}
+
+.upload {
+  width: 100%;
+  border: 2px dashed purple;
+  background: #cc00ae;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.files {
+  display: flex;
+  align-items: center;
+}
+
+.files img {
+  width: 36px;
+}
+
+.files button {
+  margin-top: 16px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  margin-left: 12px;
+  border-radius: 50%;
+  background: lightcoral;
+  width: 16px;
+  height: 16px;
+  color: white;
 }
