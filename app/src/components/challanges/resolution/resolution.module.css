@@ -280,12 +280,18 @@ input[type='checkbox'] {
   color: white;
 }
 
+button.back,
 button.next {
   border: none;
   font-weight: normal;
   margin-top: 32px;
   float: right;
   font-size: 18px;
+  margin-bottom: 24px;
+}
+
+button.back {
+  float: left;
 }
 
 button.next:disabled {
