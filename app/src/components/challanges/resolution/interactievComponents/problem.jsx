@@ -33,6 +33,15 @@ const Problem = ({ next, back }) => {
   };
 
   const save = () => {
+    for (const key in state) {
+      if (state.hasOwnProperty(key)) {
+        if (state[key].length < 5) {
+          return alert(
+            'Você deve preencher todos os campos para espeficicar o problema!',
+          );
+        }
+      }
+    }
     next();
   };
 
@@ -45,7 +54,7 @@ const Problem = ({ next, back }) => {
         name="problem"
         onChange={(e) => updateState(e)}
       />
-      <br />
+
       <TextArea
         rows={3}
         label="Descreva o problema definido"
@@ -54,7 +63,7 @@ const Problem = ({ next, back }) => {
         name="description"
         onChange={(e) => updateState(e)}
       />
-      <br />
+
       <TextArea
         rows={3}
         label="Quais são as possíveis causas desse problema?"
@@ -63,7 +72,7 @@ const Problem = ({ next, back }) => {
         name="causes"
         onChange={(e) => updateState(e)}
       />
-      <br />
+
       <TextArea
         rows={3}
         label="Quem é o público afetado por esse problema?"
@@ -72,7 +81,7 @@ const Problem = ({ next, back }) => {
         name="public"
         onChange={(e) => updateState(e)}
       />
-      <br />
+
       <TextArea
         rows={3}
         label="Em entrevista, qual é o relato do público afetado?"
@@ -81,7 +90,7 @@ const Problem = ({ next, back }) => {
         name="reports"
         onChange={(e) => updateState(e)}
       />
-      <br />
+
       <TextArea
         rows={3}
         label="Qual é a frequência que esse problema acontece?"
@@ -91,18 +100,10 @@ const Problem = ({ next, back }) => {
         onChange={(e) => updateState(e)}
       />
       <div>
-        <button
-          // disabled={students.length < 2}
-          className={classes.next}
-          onClick={save}
-        >
+        <button className={classes.next} onClick={save}>
           avançar &gt;
         </button>
-        <button
-          // disabled={students.length < 2}
-          className={classes.back}
-          onClick={back}
-        >
+        <button className={classes.back} onClick={back}>
           &lt; VOLTAR
         </button>
       </div>
