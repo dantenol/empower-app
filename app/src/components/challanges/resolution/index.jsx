@@ -7,9 +7,11 @@ import Action from './action';
 
 import Team from './interactievComponents/team';
 import Problem from './interactievComponents/problem';
+import JOTRIFLASUAPLA from './interactievComponents/jotrifalsuapla'
+import Submission from './interactievComponents/submission'
 
 const Resolutuion = () => {
-  const [index, setindex] = useState(0);
+  const [index, setindex] = useState(2);
 
   const next = () => {
     setindex(index + 1);
@@ -47,6 +49,28 @@ const Resolutuion = () => {
           />
           <Action title="preenchendo o desafio" next={next} back={back}>
             <Problem />
+          </Action>
+        </>
+        <>
+          <Description
+            videoUrl="https://www.youtube.com/embed/tH9Q_bYUjI0"
+            title="Mão na massa"
+            number={3}
+            fileUrl="https://app.projetomarvin.com/assets/pdf/Marvin+-+fase+01.pdf"
+          />
+          <Action title="inserir joreifalsuapla" next={next} back={back}>
+            <JOTRIFLASUAPLA />
+          </Action>
+        </>
+        <>
+          <Description
+            videoUrl="https://www.youtube.com/embed/tH9Q_bYUjI0"
+            title="Envio do desafio"
+            number={4}
+            fileUrl="https://app.projetomarvin.com/assets/pdf/Marvin+-+fase+01.pdf"
+          />
+          <Action next={next} back={back}>
+            <Submission />
           </Action>
         </>
       </SwipeableViews>
