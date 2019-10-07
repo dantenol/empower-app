@@ -17,7 +17,8 @@
   font-size: 20px;
   border-radius: 8px;
   width: 256px;
-  background: white
+  background: white;
+  margin-bottom: 16px;
 }
 
 .textFieldInput:focus {
