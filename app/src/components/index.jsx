@@ -10,7 +10,7 @@ import Resolution from './challanges/resolution';
 import Login from "./userManagment/login";
 
 const App = () => (
-  <Router>
+  <Router basename="/">
     <Switch>
       <Route path="/login" component={Login} />
       <Route path="/resolucao" component={Resolution} />

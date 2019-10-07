@@ -11,7 +11,7 @@ import JOTRIFLASUAPLA from './interactievComponents/jotrifalsuapla'
 import Submission from './interactievComponents/submission'
 
 const Resolutuion = () => {
-  const [index, setindex] = useState(2);
+  const [index, setindex] = useState(0);
 
   const next = () => {
     setindex(index + 1);
