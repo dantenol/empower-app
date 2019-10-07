@@ -1,14 +1,15 @@
 import React from 'react';
 
-import classes from './costomComponents.module.css'
+import classes from './costomComponents.module.css';
 
-const TextField = ({ type, value, onChange, label, name, horizontal }) => (
-  <div className={classes.textField}>
-    <p className={classes.label}>
+const TextField = ({ type, value, onChange, label, name, style }) => (
+  <div>
+    <p className={classes.label} style={style.label}>
       {label}
     </p>
     <input
       className={classes.textFieldInput}
+      style={style.input}
       type={type}
       name={name}
       value={value}
@@ -19,6 +20,7 @@ const TextField = ({ type, value, onChange, label, name, horizontal }) => (
 
 TextField.defaultProps = {
   type: 'text',
-}
+  style: {},
+};
 
 export default TextField;
