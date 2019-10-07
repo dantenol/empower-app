@@ -33,6 +33,17 @@ const Resolutuion = () => {
             <Team />
           </Action>
         </>
+        <>
+          <Description
+            videoUrl="https://www.youtube.com/embed/tH9Q_bYUjI0"
+            title="Diálogo"
+            number={2}
+            fileUrl="https://app.projetomarvin.com/assets/pdf/Marvin+-+fase+01.pdf"
+          />
+          <Action title="preenchendo o desafio" next={next}>
+            <Problem />
+          </Action>
+        </>
       </SwipeableViews>
     </main>
   );

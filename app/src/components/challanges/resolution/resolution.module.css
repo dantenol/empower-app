@@ -41,6 +41,14 @@
   border-color: #cc00ae transparent transparent transparent;
 }
 
+.darkArrow.mirror {
+  border-width: 50px 0 0 100vw;
+}
+
+.lightArrow.mirror {
+  border-width: 40px 0 0 100vw;
+}
+
 .title {
   display: flex;
   align-items: center;
@@ -277,6 +285,7 @@ button.next {
   font-weight: normal;
   margin-top: 32px;
   float: right;
+  font-size: 18px;
 }
 
 button.next:disabled {
