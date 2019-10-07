@@ -2,9 +2,8 @@ import React from 'react';
 import classes from './resolution.module.css';
 
 const Action = ({ title, children, back, next }) => {
-  console.log(children);
+  const Children = React.cloneElement(children, { next: next, back: back });
 
-  const Children = React.cloneElement(children, {next: next, back: back});
   return (
     <div className={classes.action} id="acao">
       <p className={classes.actoinTitle}>{title}</p>
