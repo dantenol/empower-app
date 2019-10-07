@@ -96,7 +96,6 @@ const Team = ({ next }) => {
   return (
     <div className={classes.containter}>
       {students.map((s, i) => {
-        console.log(s);
         return (
           <div key={s.phone} className={classes.wrap_collabsible}>
             <input id={s.phone} className={classes.toggle} type="checkbox" />
