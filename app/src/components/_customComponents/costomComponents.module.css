@@ -8,11 +8,11 @@
   margin: 0;
   font-size: 20px;
   font-weight: bold;
-  color: purple
+  color: #562598
 }
 
 .textFieldInput {
-  border: 2px solid purple;
+  border: 2px solid #562598;
   padding: 8px;
   font-size: 20px;
   border-radius: 8px;
