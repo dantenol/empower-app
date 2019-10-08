@@ -16,6 +16,7 @@ const Team = ({ next }) => {
     name: '',
     lastName: '',
     phone: '',
+    email: '',
     class: '',
     shift: '',
     challenges: [],
@@ -159,6 +160,13 @@ const Team = ({ next }) => {
             name="class"
             onChange={(e) => newStudentChange(e)}
             label="turma/sala"
+          />
+          <TextField
+            value={newStudent.email}
+            name="email"
+            type="email"
+            onChange={(e) => newStudentChange(e)}
+            label="email"
           />
           <Select
             value={newStudent.shift}
