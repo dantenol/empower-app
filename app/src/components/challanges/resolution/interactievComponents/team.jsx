@@ -155,6 +155,7 @@ const Team = ({ next }) => {
             label="celular"
             format="(##) #####-####"
             customInput={TextField}
+            type="tel"
           />
           <TextField
             value={newStudent.class}
