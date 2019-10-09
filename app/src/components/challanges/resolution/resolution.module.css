@@ -259,6 +259,11 @@ input[type='checkbox'] {
   color: #562598;
 }
 
+.challenge span {
+  line-height: 1.2em;
+  color: #562598;
+}
+
 .challenge div {
   display: grid;
   grid-template-columns: 50% 50%;

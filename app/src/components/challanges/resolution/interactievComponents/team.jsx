@@ -26,6 +26,7 @@ const Team = ({ next }) => {
     'Vale do silício',
     'Bolsa NEJ',
     'Bolsa Arnaldo',
+    'Academia de pilotos LATAM',
   ]);
 
   const newStudentChange = (e) => {
@@ -181,6 +182,7 @@ const Team = ({ next }) => {
           </Select>
           <div className={classes.challenge}>
             <p>desafios</p>
+            <span>Só poderão concorrer aos desafios os alunos que estiveram presentes no evento. Porém isso não impede que o mesmo participe da equipe. <br /> Você pode participar de mais de um desafio.</span>
             <div>
               {challenges.map((c, i) => (
                 <React.Fragment key={c}>
