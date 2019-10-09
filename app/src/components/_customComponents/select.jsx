@@ -29,4 +29,8 @@ const Select = ({
   </div>
 );
 
+Select.defaultProps = {
+  style: {},
+};
+
 export default Select;
