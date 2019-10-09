@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "db13fe1afdea23dbe3f372eca05cb3b4",
+    "revision": "d66f82973eb6173543dc948cc4325b3d",
     "url": "/empower-app/index.html"
   },
   {
