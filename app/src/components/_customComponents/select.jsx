@@ -2,25 +2,15 @@ import React from 'react';
 
 import classes from './costomComponents.module.css';
 
-const Select = ({
-  type,
-  value,
-  onChange,
-  label,
-  name,
-  horizontal,
-  children,
-  style,
-}) => (
+const Select = ({ onChange, label, children, style, ...props }) => (
   <div>
     <p className={classes.label} style={style.label}>
       {label}
     </p>
     <select
+      {...props}
       className={classes.textFieldInput}
-      name={name}
       style={style.input}
-      value={value}
       onChange={(e) => onChange(e)}
     >
       <option defaultValue disabled></option>

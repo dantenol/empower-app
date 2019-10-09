@@ -2,18 +2,15 @@ import React from 'react';
 
 import classes from './costomComponents.module.css';
 
-const TextArea = ({ type, value, onChange, label, name, rows, style }) => (
+const TextArea = ({ onChange, label, style, ...props }) => (
   <div>
     <p className={classes.label} style={style.label}>
       {label}
     </p>
     <textarea
-      rows={rows}
+      {...props}
       className={classes.textFieldInput}
-      type={type}
       style={style.input}
-      name={name}
-      value={value}
       onChange={(e) => onChange(e)}
     ></textarea>
   </div>
