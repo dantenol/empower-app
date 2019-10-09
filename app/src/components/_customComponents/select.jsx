@@ -10,12 +10,16 @@ const Select = ({
   name,
   horizontal,
   children,
+  style,
 }) => (
-  <div className={classes.textField}>
-    <p className={classes.label}>{label}</p>
+  <div>
+    <p className={classes.label} style={style.label}>
+      {label}
+    </p>
     <select
       className={classes.textFieldInput}
       name={name}
+      style={style.input}
       value={value}
       onChange={(e) => onChange(e)}
     >
