@@ -4,6 +4,7 @@ import {
   FacebookLoginButton,
 } from 'react-social-login-buttons';
 import TextField from '../../_customComponents/textField';
+import Footer from '../../footer'
 
 import empower from '../../../assets/images/empower.png';
 import classes from './login.module.css';
@@ -55,6 +56,7 @@ const Login = ({ history }) => {
           <span>Entrar com facebook</span>
         </FacebookLoginButton>
       </div>
+      <Footer />
     </main>
   );
 };
