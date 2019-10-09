@@ -7,7 +7,6 @@ const Header = ({ profilePic }) => (
   <>
     <header className={classes.header}>
       <img src={logo} className={classes.logo} alt="Logo"/>
-      <p className={classes.avatar}>pp</p>
     </header>
     <div className={classes.headerVoid} />
   </>
