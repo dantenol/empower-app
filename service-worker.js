@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/empower-app/precache-manifest.49176128e45bd2b63eafcd3ec8e826bb.js"
+  "/empower-app/precache-manifest.f1b45c2e164a46103dffa8e599a7a111.js"
 );
 
 self.addEventListener('message', (event) => {
