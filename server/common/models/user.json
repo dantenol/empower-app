@@ -27,7 +27,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "challenges": {
+      "type": "hasOne",
+      "model": "challenge",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
