@@ -1,17 +1,20 @@
 {
   "files": {
-    "main.css": "/empower-app/static/css/main.a6b315e7.chunk.css",
-    "main.js": "/empower-app/static/js/main.4cfd0fae.chunk.js",
-    "main.js.map": "/empower-app/static/js/main.4cfd0fae.chunk.js.map",
+    "main.css": "/empower-app/static/css/main.b0b13a5e.chunk.css",
+    "main.js": "/empower-app/static/js/main.15dfc408.chunk.js",
+    "main.js.map": "/empower-app/static/js/main.15dfc408.chunk.js.map",
     "runtime-main.js": "/empower-app/static/js/runtime-main.9cffabb7.js",
     "runtime-main.js.map": "/empower-app/static/js/runtime-main.9cffabb7.js.map",
-    "static/js/2.361ab325.chunk.js": "/empower-app/static/js/2.361ab325.chunk.js",
-    "static/js/2.361ab325.chunk.js.map": "/empower-app/static/js/2.361ab325.chunk.js.map",
+    "static/js/2.7a7e97c3.chunk.js": "/empower-app/static/js/2.7a7e97c3.chunk.js",
+    "static/js/2.7a7e97c3.chunk.js.map": "/empower-app/static/js/2.7a7e97c3.chunk.js.map",
     "index.html": "/empower-app/index.html",
-    "precache-manifest.29c020cf0e5d3bd1d1f3ec3b02359457.js": "/empower-app/precache-manifest.29c020cf0e5d3bd1d1f3ec3b02359457.js",
+    "precache-manifest.af8ad8a4422f79aa2a0b9fff3f86b742.js": "/empower-app/precache-manifest.af8ad8a4422f79aa2a0b9fff3f86b742.js",
     "service-worker.js": "/empower-app/service-worker.js",
-    "static/css/main.a6b315e7.chunk.css.map": "/empower-app/static/css/main.a6b315e7.chunk.css.map",
-    "static/media/cloud-download.svg": "/empower-app/static/media/cloud-download.2207eeee.svg",
+    "static/css/main.b0b13a5e.chunk.css.map": "/empower-app/static/css/main.b0b13a5e.chunk.css.map",
+    "static/media/cloud-download.svg": "/empower-app/static/media/cloud-download.43ffacbf.svg",
+    "static/media/ede_logo.png": "/empower-app/static/media/ede_logo.ca27ef4d.png",
+    "static/media/empower.png": "/empower-app/static/media/empower.26e52588.png",
+    "static/media/empower_negative.png": "/empower-app/static/media/empower_negative.304bcea5.png",
     "static/media/file.svg": "/empower-app/static/media/file.8cdf168b.svg",
     "static/media/garbage.svg": "/empower-app/static/media/garbage.cdc0663a.svg"
   }
