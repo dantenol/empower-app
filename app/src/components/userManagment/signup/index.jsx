@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import Axios from 'axios';
 
 import TextField from '../../_customComponents/textField';
 import Footer from '../../footer';
+import { url } from '../../../connector';
 
 import empower from '../../../assets/images/empower.png';
 import classes from '../user.module.css';
@@ -16,7 +18,7 @@ const styles = {
   },
 };
 const validator = {
-  phone: /^\(([0-9]{2})\)\s?[4-9]{1}[0-9]{4}[-\s]?[0-9]{4}$/i,
+  phone: /^$|^\(([0-9]{2})\)\s?[4-9]{1}[0-9]{4}[-\s]?[0-9]{4}$/i,
   email: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
 };
 
@@ -27,8 +29,8 @@ const SignUp = ({ history }) => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
 
-  const submit = () => {
-    if (!name || !email || !phone || !password) {
+  const submit = async () => {
+    if (!name || !email || !password) {
       return alert('Preencha todos os campos');
     }
     if (!email.match(validator.email)) {
@@ -40,7 +42,28 @@ const SignUp = ({ history }) => {
     if (password !== repeatPassword) {
       return alert('Ops, parece que suas senhas não conferem');
     }
-    history.push('perfil');
+
+    try {
+      await Axios.post(`${url}/users`, {
+        name,
+        email,
+        phone,
+        password,
+      });
+      try {
+        const login = await Axios.post(`${url}users/login`, {
+          email,
+          password,
+        });
+        localStorage.setItem('access_token', login.data.id);
+        localStorage.setItem('userId', login.data.userId);
+        history.push('perfil');
+      } catch (err) {
+        console.log(err);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChangePhone = (e) => {
@@ -48,6 +71,7 @@ const SignUp = ({ history }) => {
       setPhone(e.target.value);
     }
   };
+  
   return (
     <main className={classes.container}>
       <img src={empower} alt="logo" className={classes.logo} />
@@ -69,7 +93,7 @@ const SignUp = ({ history }) => {
         />
         <NumberFormat
           value={phone}
-          autocomplete="off"
+          autoComplete="off"
           style={styles}
           onChange={(e) => handleChangePhone(e)}
           type="tel"

@@ -45,6 +45,7 @@
           "*": false,
           "create": true,
           "findById": true,
+          "upload": true,
           "prototype.patchAttributes": true,
           "login": true
         }

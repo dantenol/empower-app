@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NumberFormat from 'react-number-format';
+import { url } from '../../../../connector';
 
 import TextField from '../../../_customComponents/textField';
 import Select from '../../../_customComponents/select';
 
 import classes from '../resolution.module.css';
 import trash from '../../../../assets/images/garbage.svg';
+import Axios from 'axios';
 
-const phoneNumber = /^\(([0-9]{2})\)\s?[0-9]{4|5}[-\s]?[0-9]{4}$/i;
+const phoneNumber = /^\(([0-9]{2})\)\s?[0-9]{5}[-\s]?[0-9]{4}$/i;
 
-const Team = ({ next }) => {
+const params = { access_token: localStorage.access_token };
+
+const Team = ({ next, history }) => {
   const [locked, setLocked] = useState(false);
   const [students, setStudents] = useState([]);
   const [newStudent, setNewStudent] = useState({
     name: '',
-    lastName: '',
     phone: '',
     email: '',
-    class: '',
+    grade: '',
     shift: '',
     challenges: [],
     show: false,
@@ -28,6 +31,24 @@ const Team = ({ next }) => {
     'Bolsa Arnaldo',
     'Academia de pilotos LATAM',
   ]);
+
+  useEffect(() => {
+    Axios(`${url}users/${localStorage.userId}/challenges`, { params }).then(
+      (res) => {
+        if (res.data.team.length) {
+          setStudents(res.data.team);
+        }
+        if (res.data.team.length > 1) {
+          setLocked(true);
+          next(1);
+        }
+      },
+    ).catch(err => {
+      alert('Oops, algo deu errado!');
+      localStorage.clear();
+      history.push('login');
+    });
+  }, []);
 
   const newStudentChange = (e) => {
     setNewStudent({
@@ -52,6 +73,7 @@ const Team = ({ next }) => {
     }
     for (const p in newS) {
       if (!newS[p].length) {
+        console.log(p);
         return alert(
           'Oops, parece que você esqueceu de preencher alguma coisa',
         );
@@ -61,9 +83,8 @@ const Team = ({ next }) => {
     setStudents([...students, newS]);
     setNewStudent({
       name: '',
-      lastName: '',
       phone: '',
-      class: '',
+      grade: '',
       shift: '',
       challenges: [],
       show: false,
@@ -92,19 +113,32 @@ const Team = ({ next }) => {
   };
 
   const save = async () => {
-    next();
+    try {
+      const changes = await Axios.put(
+        `${url}users/${localStorage.userId}/challenges`,
+        {
+          team: students,
+        },
+        { params },
+      );
+      setLocked(true);
+      console.log(changes);
+      next();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className={classes.containter}>
       {students.map((s, i) => {
+        const n = students.length;
         return (
           <div key={s.phone} className={classes.wrap_collabsible}>
             <input id={s.phone} className={classes.toggle} type="checkbox" />
-            <label
-              htmlFor={s.phone}
-              className={classes.lbl_toggle}
-            >{`${s.name} ${s.lastName}`}</label>
+            <label htmlFor={s.phone} className={classes.lbl_toggle}>
+              {s.name}
+            </label>
             <div className={classes.collapsible_content}>
               <div className={classes.content_inner}>
                 <p>
@@ -113,18 +147,18 @@ const Team = ({ next }) => {
                 </p>
                 <p>
                   <b>Turma:&nbsp;</b>
-                  {s.class}
+                  {s.grade}
                 </p>
                 <p>
                   <b>Turno:&nbsp;</b>
                   {s.shift}
                 </p>
                 <p>
-                  <b>desafios:&nbsp;</b>
+                  <b>Desafios:&nbsp;</b>
                   {s.challenges.join(', ')}
                 </p>
-                {!locked && (
-                  <button onClick={() => deleteStudent(i)}>
+                {!locked && i !== 0 && (
+                  <button onClick={() => deleteStudent(n)}>
                     <img src={trash} alt="delete" />
                   </button>
                 )}
@@ -140,13 +174,7 @@ const Team = ({ next }) => {
             value={newStudent.name}
             name="name"
             onChange={(e) => newStudentChange(e)}
-            label="Nome"
-          />
-          <TextField
-            value={newStudent.lastName}
-            name="lastName"
-            onChange={(e) => newStudentChange(e)}
-            label="sobrenome"
+            label="Nome e sobrenome"
           />
           <NumberFormat
             value={newStudent.phone}
@@ -158,8 +186,8 @@ const Team = ({ next }) => {
             type="tel"
           />
           <TextField
-            value={newStudent.class}
-            name="class"
+            value={newStudent.grade}
+            name="grade"
             onChange={(e) => newStudentChange(e)}
             label="turma/sala"
           />
@@ -183,7 +211,11 @@ const Team = ({ next }) => {
           </Select>
           <div className={classes.challenge}>
             <p>desafios</p>
-            <span>Só poderão concorrer aos desafios os alunos que estiveram presentes no evento. Porém isso não impede que o mesmo participe da equipe. <br /> Você pode participar de mais de um desafio.</span>
+            <span>
+              Só poderão concorrer aos desafios os alunos que estiveram
+              presentes no evento. Porém isso não impede que o mesmo participe
+              da equipe. <br /> Você pode participar de mais de um desafio.
+            </span>
             <div>
               {challenges.map((c, i) => (
                 <React.Fragment key={c}>
@@ -204,9 +236,7 @@ const Team = ({ next }) => {
               ))}
             </div>
           </div>
-          <button onClick={addStudent}>
-            salvar
-          </button>
+          <button onClick={addStudent}>salvar</button>
         </div>
       ) : (
         <button

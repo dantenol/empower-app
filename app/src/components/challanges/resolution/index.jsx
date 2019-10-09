@@ -7,14 +7,19 @@ import Action from './action';
 
 import Team from './interactievComponents/team';
 import Problem from './interactievComponents/problem';
-import JOTRIFLASUAPLA from './interactievComponents/jotrifalsuapla'
-import Submission from './interactievComponents/submission'
+import JOTRIFLASUAPLA from './interactievComponents/jotrifalsuapla';
+import Submission from './interactievComponents/submission';
+import Finish from './interactievComponents/finish';
 
-const Resolutuion = () => {
+const Resolutuion = ({ history }) => {
   const [index, setindex] = useState(0);
 
-  const next = () => {
-    setindex(index + 1);
+  const next = (n) => {
+    if (n > index) {
+      setindex(n);
+    } else {
+      setindex(index + 1);
+    }
   };
 
   const back = () => {
@@ -37,7 +42,7 @@ const Resolutuion = () => {
             fileUrl="https://app.projetomarvin.com/assets/pdf/Marvin+-+fase+01.pdf"
           />
           <Action title="cadastrar equipe" next={next}>
-            <Team />
+            <Team history={history} />
           </Action>
         </>
         <>
@@ -72,6 +77,9 @@ const Resolutuion = () => {
           <Action next={next} back={back}>
             <Submission />
           </Action>
+        </>
+        <>
+          <Finish back={back} />
         </>
       </SwipeableViews>
     </main>

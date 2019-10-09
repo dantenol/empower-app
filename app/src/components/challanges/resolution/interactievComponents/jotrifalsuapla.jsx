@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
 
 import TextField from '../../../_customComponents/textField';
 import TextArea from '../../../_customComponents/textArea';
+import { url } from '../../../../connector';
 
 import classes from '../resolution.module.css';
+
+const params = { access_token: localStorage.access_token };
 
 const labelStyle = {
   marginBottom: 4,
@@ -16,6 +20,7 @@ const inputStyle = {
 };
 
 const JOTRIFALSUAPLA = ({ next, back }) => {
+  const [locked, setLocked] = useState(false);
   const [state, setState] = useState({
     name: '',
     resolution: '',
@@ -28,6 +33,18 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
     expectations: '',
   });
 
+  useEffect(() => {
+    Axios(`${url}users/${localStorage.userId}/challenges`, { params }).then(
+      (res) => {
+        if (res.data.jotrifalsuapla) {
+          setState(res.data.jotrifalsuapla);
+          setLocked(true);
+          next(3);
+        }
+      },
+    );
+  }, []);
+
   const updateState = (e) => {
     setState({
       ...state,
@@ -35,7 +52,7 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
     });
   };
 
-  const save = () => {
+  const save = async () => {
     for (const key in state) {
       if (state.hasOwnProperty(key)) {
         if (state[key].length < 4) {
@@ -45,7 +62,18 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
         }
       }
     }
-    next();
+    try {
+      const res = await Axios.put(
+        `${url}users/${localStorage.userId}/challenges`,
+        { jotrifalsuapla: state },
+        { params },
+      );
+      console.log(res);
+      setLocked(true);
+      next();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -56,6 +84,7 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="name"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -65,6 +94,7 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="resolution"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -74,6 +104,7 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="target"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -83,6 +114,7 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="deliver"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -92,6 +124,7 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="steps"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -101,6 +134,7 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="resources"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -110,6 +144,7 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="sponsor"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -119,6 +154,7 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="team"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -128,10 +164,10 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="expectations"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
       <div>
         <button
-          // disabled={students.length < 2}
           className={classes.next}
           onClick={save}
         >

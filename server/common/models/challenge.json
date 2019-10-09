@@ -10,6 +10,10 @@
       "type": "string",
       "required": true
     },
+    "school": {
+      "type": "string",
+      "required": true
+    },
     "createdAt": {
       "type": "date"
     }

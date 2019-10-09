@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
 
 import { default as Dropdown } from '../../_customComponents/select';
 import Footer from '../../footer';
+import { url } from '../../../connector';
 
 import classes from './select.module.css';
 import logo from '../../../assets/images/empower.png';
 
-const challengesList = ['Vale do silício', 'Bolsa NEJ', 'Bolsa Arnaldo', 'Academia de pilotos LATAM'];
+const challengesList = [
+  'Vale do silício',
+  'Bolsa NEJ',
+  'Bolsa Arnaldo',
+  'Academia de pilotos LATAM',
+];
 
 const themes = [
   'Valorização do profissional de educação',
@@ -25,6 +32,28 @@ const Select = ({ history }) => {
   const [theme, setTheme] = useState('');
   const [challenges, setChallanges] = useState([]);
 
+  useEffect(() => {
+    Axios(`${url}users/${localStorage.userId}/challenges`, {
+      params: {
+        access_token: localStorage.access_token,
+      },
+    })
+      .then((r) => {
+        console.log(r);
+        if (r.data) {
+          history.push('regras');
+        }
+      })
+      .catch((e) => {
+        console.log(e.response.data.error.code);
+        if (e.response.data.error.code !== 'MODEL_NOT_FOUND') {
+          alert('Algo deu errado');
+          localStorage.clear();
+          history.push('login');
+        }
+      });
+  }, []);
+
   const selectChallenge = (c) => {
     const chas = [...challenges];
     if (chas.includes(c)) {
@@ -34,14 +63,42 @@ const Select = ({ history }) => {
     setChallanges(chas);
   };
 
-  const start = () => {
+  const start = async () => {
+    const { name, school, phone, email, grade } = JSON.parse(
+      localStorage.userProfile,
+    );
     if (!theme) {
       return alert('Você precisa selecionar um assunto para o desafio!');
     }
     if (!challenges) {
       return alert('Você precisa selecionar no mínimo um desafio!');
     }
-    history.push('regras');
+
+    try {
+      const challenge = await Axios.post(
+        `${url}users/${localStorage.userId}/challenges`,
+        {
+          theme: theme,
+          school,
+          team: [
+            {
+              name,
+              phone,
+              email,
+              grade,
+              challenges,
+            },
+          ],
+        },
+        {
+          params: {
+            access_token: localStorage.access_token,
+          },
+        },
+      );
+      console.log(challenge.data);
+      history.push('regras');
+    } catch (error) {}
   };
 
   return (
@@ -72,7 +129,7 @@ const Select = ({ history }) => {
       <br />
       <br />
       <h2>qual assunto você quer trabalhar no seu desafio?</h2>
-      <Dropdown value={theme} onChange={(e) => setTheme(e)}>
+      <Dropdown value={theme} onChange={(e) => setTheme(e.target.value)}>
         <option defaultValue disabled></option>
         {themes.map((e) => (
           <option key={e} value={e}>
@@ -80,9 +137,7 @@ const Select = ({ history }) => {
           </option>
         ))}
       </Dropdown>
-      <button onClick={start}>
-        começar o desafio
-      </button>
+      <button onClick={start}>começar o desafio</button>
       <Footer />
     </div>
   );

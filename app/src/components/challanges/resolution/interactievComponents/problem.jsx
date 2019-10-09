@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
 
 import TextField from '../../../_customComponents/textField';
 import TextArea from '../../../_customComponents/textArea';
+import { url } from '../../../../connector';
 
 import classes from '../resolution.module.css';
+
+const params = { access_token: localStorage.access_token };
 
 const labelStyle = {
   marginBottom: 4,
@@ -24,6 +28,19 @@ const Problem = ({ next, back }) => {
     reports: '',
     frequency: '',
   });
+  const [locked, setLocked] = useState(false);
+
+  useEffect(() => {
+    Axios(`${url}users/${localStorage.userId}/challenges`, { params }).then(
+      (res) => {
+        if (res.data.problem) {
+          setState(res.data.problem);
+          setLocked(true);
+          next(2);
+        }
+      },
+    );
+  }, []);
 
   const updateState = (e) => {
     setState({
@@ -32,7 +49,7 @@ const Problem = ({ next, back }) => {
     });
   };
 
-  const save = () => {
+  const save = async () => {
     for (const key in state) {
       if (state.hasOwnProperty(key)) {
         if (state[key].length < 5) {
@@ -42,7 +59,18 @@ const Problem = ({ next, back }) => {
         }
       }
     }
-    next();
+    try {
+      const res = await Axios.put(
+        `${url}users/${localStorage.userId}/challenges`,
+        {problem: state},
+        { params },
+      );
+      console.log(res);
+      setLocked(true);
+      next();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -53,6 +81,7 @@ const Problem = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="problem"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -62,6 +91,7 @@ const Problem = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="description"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -71,6 +101,7 @@ const Problem = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="causes"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -80,6 +111,7 @@ const Problem = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="public"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -89,6 +121,7 @@ const Problem = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="reports"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
 
       <TextArea
@@ -98,6 +131,7 @@ const Problem = ({ next, back }) => {
         style={{ label: labelStyle, input: inputStyle }}
         name="frequency"
         onChange={(e) => updateState(e)}
+        readOnly={locked}
       />
       <div>
         <button className={classes.next} onClick={save}>

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import Axios from 'axios';
 
 import Select from '../../_customComponents/select';
 import TextField from '../../_customComponents/textField';
 import Footer from '../../footer';
+import { url } from '../../../connector';
 
 import empower from '../../../assets/images/empower.png';
 import classes from '../user.module.css';
@@ -16,16 +18,34 @@ const styles = {
   },
 };
 
-const Profile = ({ history }) => {
+const Profile = ({ history, location }) => {
   const [school, setSchool] = useState('');
   const [grade, setGrade] = useState('');
   const [state, setState] = useState('');
 
-  const submit = () => {
+  const submit = async () => {
     if (!school || !grade || !state) {
       return alert('Preencha todos os campos');
     }
-    history.push('selecionar');
+    try {
+      const res = await Axios.patch(
+        `${url}users/${localStorage.userId}`,
+        {
+          school,
+          grade,
+          state,
+        },
+        {
+          params: {
+            access_token: localStorage.access_token,
+          },
+        },
+      );
+      localStorage.setItem('userProfile', JSON.stringify(res.data))
+      history.push('selecionar');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -50,7 +70,7 @@ const Profile = ({ history }) => {
           label="Estado"
           style={styles}
           value={state}
-          onChange={(e) => setState(e)}
+          onChange={(e) => setState(e.target.value)}
         >
           <option value="MG">MG</option>
           <option value="SP">SP</option>
