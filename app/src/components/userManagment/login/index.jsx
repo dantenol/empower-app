@@ -25,7 +25,7 @@ const Login = ({ history }) => {
   const [password, setPassword] = useState('');
 
   const login = () => {
-    history.push('bemvindo');
+    history.push('selecionar');
   };
 
   return (
