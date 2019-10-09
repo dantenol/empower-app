@@ -32,7 +32,7 @@ const Login = ({ history }) => {
     <main className={classes.container}>
       <img src={empower} alt="logo" className={classes.logo} />
       <div className={classes.info}>
-        <p>ENTRAR</p>
+        <h3>ENTRAR</h3>
         <TextField
           label="email"
           value={username}
