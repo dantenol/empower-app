@@ -22,6 +22,9 @@ const Profile = ({ history }) => {
   const [state, setState] = useState('');
 
   const submit = () => {
+    if (!school || !grade || !state) {
+      return alert('Preencha todos os campos');
+    }
     history.push('selecionar');
   };
 
@@ -43,10 +46,15 @@ const Profile = ({ history }) => {
           style={styles}
           onChange={(e) => setGrade(e.target.value)}
         />
-        <Select label="Estado" style={styles} value={state} onChange={(e) => setState(e)}>
-        <option value="MG">MG</option>
-        <option value="SP">SP</option>
-      </Select>
+        <Select
+          label="Estado"
+          style={styles}
+          value={state}
+          onChange={(e) => setState(e)}
+        >
+          <option value="MG">MG</option>
+          <option value="SP">SP</option>
+        </Select>
         <button className={classes.white} onClick={submit}>
           finalizar
         </button>
