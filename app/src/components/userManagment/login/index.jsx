@@ -3,9 +3,10 @@ import {
   GoogleLoginButton,
   FacebookLoginButton,
 } from 'react-social-login-buttons';
+import { Link } from 'react-router-dom';
 
 import TextField from '../../_customComponents/textField';
-import Footer from '../../footer'
+import Footer from '../../footer';
 
 import empower from '../../../assets/images/empower.png';
 import classes from '../user.module.css';
@@ -49,6 +50,9 @@ const Login = ({ history }) => {
         <button className={classes.white} onClick={login}>
           entar
         </button>
+        <Link className={classes.signup} to="cadastro">
+          ainda não tenho conta
+        </Link>
         <p>OU</p>
         <GoogleLoginButton className={classes.social}>
           <span>Entrar com Google</span>
