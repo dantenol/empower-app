@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 24px;
+  color: #562598;
+  text-align: center;
+}
+
+.logo {
+  width: 60vw;
+}
+
+.challenge {
+  margin-top: 24px;
+}
+
+.container h2 {
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.container button {
+  max-width: 480px;
+}
+
+.challenge div {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.challengeClick {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.2em;
+  border: 1px solid #562598;
+  text-transform: uppercase;
+  margin: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.toggle:checked + .challengeClick {
+  background-color: #562598;
+  color: white;
+}
