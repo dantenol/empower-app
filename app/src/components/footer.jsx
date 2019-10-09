@@ -4,7 +4,6 @@ import logo from '../assets/images/ede_logo.png';
 
 const styles = {
   container: {
-    display: 'block',
     marginTop: 64,
     marginBottom: 16,
     display: 'flex',

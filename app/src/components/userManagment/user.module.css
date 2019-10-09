@@ -23,7 +23,13 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: calc(100vw - 40px);
+  margin: 16px;
+}
+
+.signup {
+  color: white;
+  padding-top: 16px;
+  font-size: 18px;
 }
 
 .info > h3,
@@ -38,7 +44,7 @@ button {
 
 .white{
   border: none;
-  color: #562598
+  color: #562598;
 }
 
 .social {

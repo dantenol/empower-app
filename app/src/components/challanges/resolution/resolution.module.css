@@ -13,7 +13,7 @@
 .header .logo {
   width: 60vw;
   margin-top: 16px;
-  max-height: 48px;
+  max-width: 242px;
 }
 
 .avatar {
