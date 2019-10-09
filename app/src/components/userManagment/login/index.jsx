@@ -3,11 +3,12 @@ import {
   GoogleLoginButton,
   FacebookLoginButton,
 } from 'react-social-login-buttons';
+
 import TextField from '../../_customComponents/textField';
 import Footer from '../../footer'
 
 import empower from '../../../assets/images/empower.png';
-import classes from './login.module.css';
+import classes from '../user.module.css';
 
 const styles = {
   label: {
