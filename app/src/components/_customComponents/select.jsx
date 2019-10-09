@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './costomComponents.module.css';
 
-const TextField = ({
+const Select = ({
   type,
   value,
   onChange,
@@ -25,4 +25,4 @@ const TextField = ({
   </div>
 );
 
-export default TextField;
+export default Select;
