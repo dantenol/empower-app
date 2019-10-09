@@ -41,7 +41,7 @@ const Select = ({ history }) => {
     if (!challenges) {
       return alert('Você precisa selecionar no mínimo um desafio!');
     }
-    history.push('resolucao');
+    history.push('regras');
   };
 
   return (

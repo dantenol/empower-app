@@ -47,7 +47,7 @@ const Login = ({ history }) => {
           style={styles}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className={classes.white} onClick={login}>
+        <button className={classes.green} onClick={login}>
           entar
         </button>
         <Link className={classes.signup} to="cadastro">

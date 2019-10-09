@@ -11,6 +11,7 @@ import Login from "./userManagment/login";
 import Profile from "./userManagment/profile";
 import Select from './challanges/select';
 import SignUp from './userManagment/signup';
+import Rules from './challanges/rules';
 
 const App = () => (
   <Router basename="/">
@@ -18,6 +19,7 @@ const App = () => (
       <Route path="/login" component={Login} />
       <Route path="/cadastro" component={SignUp} />
       <Route path="/perfil" component={Profile} />
+      <Route path="/regras" component={Rules} />
       <Route path="/selecionar" component={Select} />
       <Route path="/resolucao" component={Resolution} />
       <Route render={() => <Redirect to ="/login" />} />

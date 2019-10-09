@@ -58,7 +58,7 @@ const Resolutuion = () => {
             number={3}
             fileUrl="https://app.projetomarvin.com/assets/pdf/Marvin+-+fase+01.pdf"
           />
-          <Action title="inserir joreifalsuapla" next={next} back={back}>
+          <Action title="inserir jotrifalsuapla" next={next} back={back}>
             <JOTRIFLASUAPLA />
           </Action>
         </>

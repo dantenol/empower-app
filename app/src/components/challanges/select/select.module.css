@@ -9,7 +9,7 @@
 }
 
 .logo {
-  width: 60vw;
+  width: 40vw;
 }
 
 .challenge {
@@ -23,6 +23,8 @@
 
 .container button {
   max-width: 480px;
+  color: white;
+  border: 0;
   background: #4ec4d0;
 }
 

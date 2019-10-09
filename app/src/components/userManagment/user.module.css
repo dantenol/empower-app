@@ -42,9 +42,10 @@ button {
   margin-top: 24px;
 }
 
-.white{
+.green{
   border: none;
-  color: #562598;
+  color: white;
+  background: #4ec4d0;
 }
 
 .social {

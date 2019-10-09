@@ -29,12 +29,6 @@ const Description = ({ videoUrl, title, number, fileUrl }) => (
         <span className={classes.buttonText}>material de apoio</span>
       </a>
     </div>
-    <div
-      className={classNames(
-        classes.darkArrow,
-        number % 2 === 0 && classes.mirror,
-      )}
-    ></div>
     <div className={classNames(
         classes.lightArrow,
         number % 2 === 0 && classes.mirror,

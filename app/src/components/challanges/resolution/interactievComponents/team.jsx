@@ -7,7 +7,7 @@ import Select from '../../../_customComponents/select';
 import classes from '../resolution.module.css';
 import trash from '../../../../assets/images/garbage.svg';
 
-const phoneNumber = /^\(([0-9]{2})\)\s?[4-9]{1}[0-9]{4}[-\s]?[0-9]{4}$/i;
+const phoneNumber = /^\(([0-9]{2})\)\s?[0-9]{4|5}[-\s]?[0-9]{4}$/i;
 
 const Team = ({ next }) => {
   const [locked, setLocked] = useState(false);
