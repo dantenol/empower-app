@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d66f82973eb6173543dc948cc4325b3d",
+    "revision": "7d3b92a8b008c6c10804debade08accb",
     "url": "/empower-app/index.html"
   },
   {
-    "revision": "097e4f0a529839587c51",
+    "revision": "db1e5a65c61c0f91191d",
     "url": "/empower-app/static/css/main.9c986687.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/empower-app/static/js/2.72e3c69f.chunk.js"
   },
   {
-    "revision": "097e4f0a529839587c51",
-    "url": "/empower-app/static/js/main.f5c0db28.chunk.js"
+    "revision": "db1e5a65c61c0f91191d",
+    "url": "/empower-app/static/js/main.6f3d20cd.chunk.js"
   },
   {
     "revision": "5e4ec3fd887ac65246fe",
