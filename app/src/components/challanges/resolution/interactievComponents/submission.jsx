@@ -8,8 +8,6 @@ import { url } from '../../../../connector';
 
 import file from '../../../../assets/images/file.svg';
 
-const params = { access_token: localStorage.access_token };
-
 const inputStyle = {
   width: '100%',
 };
@@ -22,16 +20,16 @@ const Submission = ({ back, next }) => {
   const [locked, setLocked] = useState(false);
 
   useEffect(() => {
-    Axios(`${url}users/${localStorage.userId}/challenges`, { params }).then(
-      (res) => {
-        if (res.data.submission) {
-          setVideoUrl(res.data.submission.videoUrl);
-          setDescription(res.data.submission.description);
-          setLocked(true);
-          next(4);
-        }
-      },
-    );
+    Axios(`${url}users/${localStorage.userId}/challenges`, {
+      params: { access_token: localStorage.access_token },
+    }).then((res) => {
+      if (res.data.submission) {
+        setVideoUrl(res.data.submission.videoUrl);
+        setDescription(res.data.submission.description);
+        setLocked(true);
+        next(4);
+      }
+    });
   }, []);
 
   const handleProgress = (file, progress, cancel) => {
@@ -71,7 +69,7 @@ const Submission = ({ back, next }) => {
         );
         handleProgress(e.target.files[0], percentCompleted, cancel);
       },
-      params,
+      params: { access_token: localStorage.access_token },
     };
 
     try {
@@ -112,7 +110,9 @@ const Submission = ({ back, next }) => {
       const res = await Axios.put(
         `${url}users/${localStorage.userId}/challenges`,
         { submission: st },
-        { params },
+        {
+          params: { access_token: localStorage.access_token },
+        },
       );
       console.log(res);
       setLocked(true);

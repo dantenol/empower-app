@@ -7,8 +7,6 @@ import { url } from '../../../../connector';
 
 import classes from '../resolution.module.css';
 
-const params = { access_token: localStorage.access_token };
-
 const labelStyle = {
   marginBottom: 4,
   fontWeight: 'normal',
@@ -31,15 +29,15 @@ const Problem = ({ next, back }) => {
   const [locked, setLocked] = useState(false);
 
   useEffect(() => {
-    Axios(`${url}users/${localStorage.userId}/challenges`, { params }).then(
-      (res) => {
-        if (res.data.problem) {
-          setState(res.data.problem);
-          setLocked(true);
-          next(2);
-        }
-      },
-    );
+    Axios(`${url}users/${localStorage.userId}/challenges`, {
+      params: { access_token: localStorage.access_token },
+    }).then((res) => {
+      if (res.data.problem) {
+        setState(res.data.problem);
+        setLocked(true);
+        next(2);
+      }
+    });
   }, []);
 
   const updateState = (e) => {
@@ -62,8 +60,10 @@ const Problem = ({ next, back }) => {
     try {
       const res = await Axios.put(
         `${url}users/${localStorage.userId}/challenges`,
-        {problem: state},
-        { params },
+        { problem: state },
+        {
+          params: { access_token: localStorage.access_token },
+        },
       );
       console.log(res);
       setLocked(true);

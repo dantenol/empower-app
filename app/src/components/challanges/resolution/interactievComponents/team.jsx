@@ -11,8 +11,6 @@ import Axios from 'axios';
 
 const phoneNumber = /^\(([0-9]{2})\)\s?[0-9]{5}[-\s]?[0-9]{4}$/i;
 
-const params = { access_token: localStorage.access_token };
-
 const Team = ({ next, history }) => {
   const [locked, setLocked] = useState(false);
   const [students, setStudents] = useState([]);
@@ -33,8 +31,10 @@ const Team = ({ next, history }) => {
   ]);
 
   useEffect(() => {
-    Axios(`${url}users/${localStorage.userId}/challenges`, { params }).then(
-      (res) => {
+    Axios(`${url}users/${localStorage.userId}/challenges`, {
+      params: { access_token: localStorage.access_token },
+    })
+      .then((res) => {
         if (res.data.team.length) {
           setStudents(res.data.team);
         }
@@ -42,12 +42,12 @@ const Team = ({ next, history }) => {
           setLocked(true);
           next(1);
         }
-      },
-    ).catch(err => {
-      alert('Oops, algo deu errado!');
-      localStorage.clear();
-      history.push('login');
-    });
+      })
+      .catch((err) => {
+        alert('Oops, algo deu errado!');
+        localStorage.clear();
+        history.push('login');
+      });
   }, []);
 
   const newStudentChange = (e) => {
@@ -119,7 +119,9 @@ const Team = ({ next, history }) => {
         {
           team: students,
         },
-        { params },
+        {
+          params: { access_token: localStorage.access_token },
+        },
       );
       setLocked(true);
       console.log(changes);

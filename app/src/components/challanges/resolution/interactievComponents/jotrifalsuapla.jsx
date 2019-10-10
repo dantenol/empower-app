@@ -7,8 +7,6 @@ import { url } from '../../../../connector';
 
 import classes from '../resolution.module.css';
 
-const params = { access_token: localStorage.access_token };
-
 const labelStyle = {
   marginBottom: 4,
   fontWeight: 'normal',
@@ -34,15 +32,15 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
   });
 
   useEffect(() => {
-    Axios(`${url}users/${localStorage.userId}/challenges`, { params }).then(
-      (res) => {
-        if (res.data.jotrifalsuapla) {
-          setState(res.data.jotrifalsuapla);
-          setLocked(true);
-          next(3);
-        }
-      },
-    );
+    Axios(`${url}users/${localStorage.userId}/challenges`, {
+      params: { access_token: localStorage.access_token },
+    }).then((res) => {
+      if (res.data.jotrifalsuapla) {
+        setState(res.data.jotrifalsuapla);
+        setLocked(true);
+        next(3);
+      }
+    });
   }, []);
 
   const updateState = (e) => {
@@ -66,7 +64,9 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
       const res = await Axios.put(
         `${url}users/${localStorage.userId}/challenges`,
         { jotrifalsuapla: state },
-        { params },
+        {
+          params: { access_token: localStorage.access_token },
+        },
       );
       console.log(res);
       setLocked(true);
@@ -167,10 +167,7 @@ const JOTRIFALSUAPLA = ({ next, back }) => {
         readOnly={locked}
       />
       <div>
-        <button
-          className={classes.next}
-          onClick={save}
-        >
+        <button className={classes.next} onClick={save}>
           avançar &gt;
         </button>
         <button className={classes.back} onClick={back}>
