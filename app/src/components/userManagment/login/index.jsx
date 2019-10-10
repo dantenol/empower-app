@@ -83,7 +83,7 @@ const Login = ({ history }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button className={classes.green} onClick={login}>
-          entar
+          entrar
         </button>
         <Link className={classes.signup} to="cadastro">
           ainda não tenho conta

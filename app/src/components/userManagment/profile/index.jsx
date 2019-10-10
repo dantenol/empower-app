@@ -18,13 +18,12 @@ const styles = {
   },
 };
 
-const Profile = ({ history, location }) => {
+const Profile = ({ history }) => {
   const [school, setSchool] = useState('');
   const [grade, setGrade] = useState('');
-  const [state, setState] = useState('');
 
   const submit = async () => {
-    if (!school || !grade || !state) {
+    if (!school || !grade) {
       return alert('Preencha todos os campos');
     }
     try {
@@ -33,7 +32,6 @@ const Profile = ({ history, location }) => {
         {
           school,
           grade,
-          state,
         },
         {
           params: {
@@ -66,15 +64,6 @@ const Profile = ({ history, location }) => {
           style={styles}
           onChange={(e) => setGrade(e.target.value)}
         />
-        <Select
-          label="Estado"
-          style={styles}
-          value={state}
-          onChange={(e) => setState(e.target.value)}
-        >
-          <option value="MG">MG</option>
-          <option value="SP">SP</option>
-        </Select>
         <button className={classes.white} onClick={submit}>
           finalizar
         </button>

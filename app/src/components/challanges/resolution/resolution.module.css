@@ -102,6 +102,7 @@
   font-size: 24px;
   font-weight: bold;
   margin-top: 0;
+  color: initial;
 }
 
 .downloadButton {
@@ -123,7 +124,7 @@
 }
 
 .container {
-  display: flex;
+  color: #562598;
 }
 
 .button,

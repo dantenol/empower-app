@@ -132,7 +132,8 @@ const Team = ({ next, history }) => {
   };
 
   return (
-    <div className={classes.containter}>
+    <div className={classes.container}>
+      <p>A equipe deve ter no mínimo duas pessoas</p>
       {students.map((s, i) => {
         const n = students.length;
         return (

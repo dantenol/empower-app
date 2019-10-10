@@ -19,9 +19,6 @@
     "school": {
       "type": "string"
     },
-    "state": {
-      "type": "string"
-    },
     "grade": {
       "type": "string"
     }
