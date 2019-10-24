@@ -34,7 +34,7 @@ module.exports = function(User) {
     console.log(data);
     const usr = await User.findOne({where: {email: data.email}});
     console.log(usr);
-    if (data.status === 'unknown') {
+    if (data.status === 'unknown' || data.error) {
       throw "Algo deu errado no login";
     }
     if (!usr) {
