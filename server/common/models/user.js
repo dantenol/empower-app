@@ -31,31 +31,39 @@ module.exports = function(User) {
 
   User.fbLogin = async (data) => {
     const AccessToken = User.app.models.AccessToken;
-    console.log(data);
-    const usr = await User.findOne({where: {email: data.email}});
-    console.log(usr);
     if (data.status === 'unknown' || data.error) {
-      throw "Algo deu errado no login";
+      throw 'Algo deu errado no login';
     }
+    let query = {};
+    if (data.email) {
+      query.email = data.email;
+    } else {
+      query.fbId = data.id;
+    }
+
+    console.log(query);
+    const usr = await User.findOne({
+      where: query,
+    });
+    console.log(usr);
     if (!usr) {
       const newUsr = await User.create({
         name: data.name,
-        email: data.email,
+        email: data.email || '',
         fbId: data.id,
         password: randomstring.generate(6),
         modifiedAt: new Date(),
       });
-      console.log(newUsr);
       const newToken = {
         ttl: 315360000,
         created: new Date(),
         userId: String(newUsr.id),
       };
-      const token = await AccessToken.upsert(newToken, {upsert: false});
-      return {token, user: newUsr}
+      const token = await AccessToken.upsert(newToken, { upsert: false });
+      return { token, user: newUsr };
     }
     if (!usr.fbId) {
-      throw "Você já tem uma conta usando o email do Facebook: " + usr.email;
+      throw 'Você já tem uma conta usando o email do Facebook: ' + usr.email;
     }
     if (usr.fbId) {
       if (data.id === usr.fbId) {
@@ -64,10 +72,10 @@ module.exports = function(User) {
           created: new Date(),
           userId: String(usr.id),
         };
-        const token = await AccessToken.upsert(newToken, {upsert: false});
-        return {token, user: usr}
+        const token = await AccessToken.upsert(newToken, { upsert: false });
+        return { token, user: usr };
       } else {
-        throw "Algo deu errado no login";
+        throw 'Algo deu errado no login';
       }
     }
   };
