@@ -45,7 +45,7 @@
           "*": false,
           "create": true,
           "findById": true,
-          "upload": true,
+          "fbLogin": true,
           "prototype.patchAttributes": true,
           "login": true
         }

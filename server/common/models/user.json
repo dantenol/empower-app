@@ -16,6 +16,9 @@
     "phone": {
       "type": "string"
     },
+    "fbId": {
+      "type": "string"
+    },
     "school": {
       "type": "string"
     },
@@ -41,9 +44,9 @@
     {
       "accessType": "EXECUTE",
       "principalType": "ROLE",
-      "principalId": "$authenticated",
+      "principalId": "$everyone",
       "permission": "ALLOW",
-      "property": "upload"
+      "property": "fbLogin"
     }
   ],
   "methods": {}
