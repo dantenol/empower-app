@@ -11,6 +11,16 @@ import Axios from 'axios';
 
 const phoneNumber = /^\(([0-9]{2})\)\s?[0-9]{5}[-\s]?[0-9]{4}$/i;
 
+const challengesList = [
+  'Academia de Pilotos LATAM',
+  ' Bolsa Faculdade Arnaldo',
+  'Mentoria Sympla'  ,
+  'Intercâmbio para os Estados Unidos',
+  "Curso de inglês Must Language Center",
+  "Inovalab Student Conference",
+  "Aceleração de negócio – Friends Labs"
+];
+
 const Team = ({ next, history }) => {
   const [locked, setLocked] = useState(false);
   const [students, setStudents] = useState([]);
@@ -23,12 +33,6 @@ const Team = ({ next, history }) => {
     challenges: [],
     show: false,
   });
-  const [challenges] = useState([
-    'Vale do silício',
-    'Bolsa NEJ',
-    'Bolsa Arnaldo',
-    'Academia de pilotos LATAM',
-  ]);
 
   useEffect(() => {
     Axios(`${url}users/${localStorage.userId}/challenges`, {
@@ -220,7 +224,7 @@ const Team = ({ next, history }) => {
               da equipe. <br /> Você pode participar de mais de um desafio.
             </span>
             <div>
-              {challenges.map((c, i) => (
+              {challengesList.map((c, i) => (
                 <React.Fragment key={c}>
                   <input
                     id={`chal${i}`}

@@ -9,10 +9,13 @@ import classes from './select.module.css';
 import logo from '../../../assets/images/empower.png';
 
 const challengesList = [
-  'Vale do silício',
-  'Bolsa NEJ',
-  'Bolsa Arnaldo',
-  'Academia de pilotos LATAM',
+  'Academia de Pilotos LATAM',
+  ' Bolsa Faculdade Arnaldo',
+  'Mentoria Sympla'  ,
+  'Intercâmbio para os Estados Unidos',
+  "Curso de inglês Must Language Center",
+  "Inovalab Student Conference",
+  "Aceleração de negócio – Friends Labs"
 ];
 
 const themes = [

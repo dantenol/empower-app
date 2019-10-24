@@ -10,6 +10,13 @@
   z-index: 999;
 }
 
+.header .logout {
+  position: absolute;
+  color: white;
+  padding: 8px;
+  right: 0;
+}
+
 .header .logo {
   width: 60vw;
   margin-top: 16px;

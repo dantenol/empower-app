@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import FacebookLogin from 'react-facebook-login';
-import GoogleLogin from 'react-google-login';
 
 import TextField from '../../_customComponents/textField';
 import Footer from '../../footer';
@@ -60,9 +59,28 @@ const Login = ({ history }) => {
     }
   };
 
-  const responseFacebook = (response) => {
-    console.log(response);
+  const responseFacebook = async (response) => {
+    try {
+      const usr = await Axios.post(`${url}users/fbLogin`, response);
+      console.log(usr.data);
+      localStorage.setItem('access_token', usr.data.token.id);
+      localStorage.setItem('userId', usr.data.token.userId);
+      localStorage.setItem('userProfile', JSON.stringify(usr.data.user));
+      if (usr.data.user.school) {
+        history.push('/selecionar');
+      } else if (!usr.data.user.phone) {
+        history.push('/perfil?celular');
+      } else {
+        history.push('/perfil');
+      }
+    } catch (error) {
+      console.log(error.response.data.error.message);
+      if (error.response.data.error.message.includes("Facebook")) {
+        alert(error.response.data.error.message)
+      }
+    }
   };
+
   return (
     <main className={classes.container}>
       <img src={empower} alt="logo" className={classes.logo} />
@@ -89,13 +107,6 @@ const Login = ({ history }) => {
           ainda não tenho conta
         </Link>
         <p>OU</p>
-        <GoogleLogin
-          clientId="953917687393-3n0md17ogc542gfup2arkdtcm9fp51mn.apps.googleusercontent.com"
-          buttonText="Entrar com Google"
-          onSuccess={responseFacebook}
-          onFailure={responseFacebook}
-          cookiePolicy={'single_host_origin'}
-        />
         <FacebookLogin
           appId="447517959200845"
           language="pt_BR"

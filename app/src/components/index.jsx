@@ -12,6 +12,7 @@ import Profile from "./userManagment/profile";
 import Select from './challanges/select';
 import SignUp from './userManagment/signup';
 import Rules from './challanges/rules';
+import Policy from './policy';
 
 const App = () => (
   <Router basename="/">
@@ -22,6 +23,7 @@ const App = () => (
       <Route path="/regras" component={Rules} />
       <Route path="/selecionar" component={Select} />
       <Route path="/resolucao" component={Resolution} />
+      <Route path="/politica_de_privacidade" component={Policy} />
       <Route render={() => <Redirect to ="/login" />} />
     </Switch>
   </Router>
