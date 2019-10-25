@@ -249,7 +249,7 @@ const Team = ({ next, history }) => {
         <button
           className={classes.newStudentButton}
           onClick={toggleAddStudent}
-          hidden={students.length >= 4 || locked}
+          hidden={students.length >= 6 || locked}
         >
           + Adicionar integrante
         </button>
