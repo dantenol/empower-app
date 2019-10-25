@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.9ef64ef8.chunk.css",
-    "main.js": "/static/js/main.56c8293a.chunk.js",
-    "main.js.map": "/static/js/main.56c8293a.chunk.js.map",
+    "main.js": "/static/js/main.a8bf25d0.chunk.js",
+    "main.js.map": "/static/js/main.a8bf25d0.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.8f34dedb.js",
     "runtime-main.js.map": "/static/js/runtime-main.8f34dedb.js.map",
     "static/js/2.aefaa493.chunk.js": "/static/js/2.aefaa493.chunk.js",
     "static/js/2.aefaa493.chunk.js.map": "/static/js/2.aefaa493.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.cabc667cb2a860a7ea983e2a92154b88.js": "/precache-manifest.cabc667cb2a860a7ea983e2a92154b88.js",
+    "precache-manifest.776b3eb0daf684822e0eb781e1c09b9e.js": "/precache-manifest.776b3eb0daf684822e0eb781e1c09b9e.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.9ef64ef8.chunk.css.map": "/static/css/main.9ef64ef8.chunk.css.map",
     "static/media/cloud-download.svg": "/static/media/cloud-download.43ffacbf.svg",
