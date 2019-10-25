@@ -36,7 +36,7 @@ const Resolutuion = ({ history }) => {
       >
         <>
           <Description
-            videoUrl="https://www.youtube.com/embed/tH9Q_bYUjI0"
+            videoUrl="https://www.youtube.com/embed/C_NwNqJhJBw"
             title="inspiração"
             number={1}
             fileUrl="https://crieoimpossivel.com.br/pdf/fase1.pdf"
@@ -47,7 +47,7 @@ const Resolutuion = ({ history }) => {
         </>
         <>
           <Description
-            videoUrl="https://www.youtube.com/embed/tH9Q_bYUjI0"
+            videoUrl="https://www.youtube.com/embed/51_k-SzzvFA"
             title="Diálogo"
             number={2}
             fileUrl="https://crieoimpossivel.com.br/pdf/fase2.pdf"
@@ -58,7 +58,7 @@ const Resolutuion = ({ history }) => {
         </>
         <>
           <Description
-            videoUrl="https://www.youtube.com/embed/tH9Q_bYUjI0"
+            videoUrl="https://www.youtube.com/embed/66eAu__gteU"
             title="Mão na massa"
             number={3}
             fileUrl="https://crieoimpossivel.com.br/pdf/fase3.pdf"
@@ -69,7 +69,7 @@ const Resolutuion = ({ history }) => {
         </>
         <>
           <Description
-            videoUrl="https://www.youtube.com/embed/tH9Q_bYUjI0"
+            videoUrl="https://www.youtube.com/embed/SKJGAdA8jkQ"
             title="Envio do desafio"
             number={4}
             fileUrl="https://crieoimpossivel.com.br/pdf/fase4.pdf"
