@@ -13,7 +13,7 @@ const phoneNumber = /^\(([0-9]{2})\)\s?[0-9]{5}[-\s]?[0-9]{4}$/i;
 
 const challengesList = [
   'Academia de Pilotos LATAM',
-  ' Bolsa Faculdade Arnaldo',
+  'Bolsa Faculdade Arnaldo',
   'Mentoria Sympla'  ,
   'Intercâmbio para os Estados Unidos',
   "Curso de inglês Must Language Center",

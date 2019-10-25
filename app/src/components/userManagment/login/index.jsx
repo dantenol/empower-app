@@ -44,7 +44,6 @@ const Login = ({ history }) => {
         email: username,
         password,
       });
-      console.log(usr);
       localStorage.setItem('access_token', usr.data.id);
       localStorage.setItem('userId', usr.data.userId);
       localStorage.setItem('userProfile', JSON.stringify(usr.data.user));
@@ -62,7 +61,6 @@ const Login = ({ history }) => {
   const responseFacebook = async (response) => {
     try {
       const usr = await Axios.post(`${url}users/fbLogin`, response);
-      console.log(usr.data);
       localStorage.setItem('access_token', usr.data.token.id);
       localStorage.setItem('userId', usr.data.token.userId);
       localStorage.setItem('userProfile', JSON.stringify(usr.data.user));

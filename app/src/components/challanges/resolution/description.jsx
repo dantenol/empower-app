@@ -22,7 +22,7 @@ const Description = ({ videoUrl, title, number, fileUrl }) => (
       </div>
       <a
         href={fileUrl}
-        target="__blank"
+        target="_blank"
         className={classNames(classes.downloadButton, classes.button)}
       >
         <img alt="download" src={download} className={classes.buttonIcon} />

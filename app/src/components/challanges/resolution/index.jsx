@@ -39,7 +39,7 @@ const Resolutuion = ({ history }) => {
             videoUrl="https://www.youtube.com/embed/tH9Q_bYUjI0"
             title="inspiração"
             number={1}
-            fileUrl="https://app.projetomarvin.com/assets/pdf/Marvin+-+fase+01.pdf"
+            fileUrl="https://crieoimpossivel.com.br/pdf/fase1.pdf"
           />
           <Action title="cadastrar equipe" next={next}>
             <Team history={history} />
@@ -50,7 +50,7 @@ const Resolutuion = ({ history }) => {
             videoUrl="https://www.youtube.com/embed/tH9Q_bYUjI0"
             title="Diálogo"
             number={2}
-            fileUrl="https://app.projetomarvin.com/assets/pdf/Marvin+-+fase+01.pdf"
+            fileUrl="https://crieoimpossivel.com.br/pdf/fase2.pdf"
           />
           <Action title="preenchendo o desafio" next={next} back={back}>
             <Problem />
@@ -61,7 +61,7 @@ const Resolutuion = ({ history }) => {
             videoUrl="https://www.youtube.com/embed/tH9Q_bYUjI0"
             title="Mão na massa"
             number={3}
-            fileUrl="https://app.projetomarvin.com/assets/pdf/Marvin+-+fase+01.pdf"
+            fileUrl="https://crieoimpossivel.com.br/pdf/fase3.pdf"
           />
           <Action title="inserir jotrifalsuapla" next={next} back={back}>
             <JOTRIFLASUAPLA />
@@ -72,7 +72,7 @@ const Resolutuion = ({ history }) => {
             videoUrl="https://www.youtube.com/embed/tH9Q_bYUjI0"
             title="Envio do desafio"
             number={4}
-            fileUrl="https://app.projetomarvin.com/assets/pdf/Marvin+-+fase+01.pdf"
+            fileUrl="https://crieoimpossivel.com.br/pdf/fase4.pdf"
           />
           <Action next={next} back={back}>
             <Submission />
