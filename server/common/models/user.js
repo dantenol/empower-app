@@ -16,9 +16,10 @@ module.exports = function(User) {
     return;
   });
 
-  User.beforeRemote('login', (ctx) => {
+  User.beforeRemote('login', (ctx, data, next) => {
     const body = ctx.req.body;
     body.ttl = 315360000;
+    next();
   });
 
   User.beforeRemote('prorortpe.__create__challenge', async (ctx) => {
