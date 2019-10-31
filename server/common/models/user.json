@@ -46,7 +46,10 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property": "fbLogin"
+      "property": [
+        "fbLogin",
+        "count"
+      ]
     }
   ],
   "methods": {}
