@@ -48,6 +48,7 @@
       "permission": "ALLOW",
       "property": [
         "fbLogin",
+        "find",
         "count"
       ]
     }
