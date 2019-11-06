@@ -48,7 +48,7 @@
           "fbLogin": true,
           "prototype.patchAttributes": true,
           "login": true,
-          "count": true
+          "find": true
         }
       }
     }
